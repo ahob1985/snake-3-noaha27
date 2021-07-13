@@ -1,5 +1,7 @@
 // Author: Noah Abiy
 
+//https://teachablemachine.withgoogle.com/models/xYewr7fOx/
+
 // Global UI Variables
 let canvasDiv;
 let canvas;
@@ -44,7 +46,10 @@ function setup() {
   // Set the game's framerate to 5 (or whatever you prefer)
   frameRate(5);
   // Load the sound classifier
-
+  let options = {
+    probabilityThreshold: 85
+  }
+  soundClassifier = ml5.soundClassifier("https://teachablemachine.withgoogle.com/models/xYewr7fOx/", options, modelReady);
 }
 
 function draw() {
@@ -110,7 +115,9 @@ function resetGame() {
 }
 
 function modelReady() {
-
+  soundClassifier.classify(gotResults);
+  isModelReady = true;
+  resetGame();
 }
 
 function gotResults(error, results) {

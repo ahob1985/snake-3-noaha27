@@ -5,7 +5,7 @@ class Snake {
     this.body[0] = createVector(floor(scaledWidth / 2),  floor(scaledHeight /
       2));
     this.xDirection = 0;
-    this.yDirection = 0;
+    this.yDirection = 0;z
   }
 
   update() {
